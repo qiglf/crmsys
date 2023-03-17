@@ -1,0 +1,12 @@
+{% include "header.html" %}
+
+ <div class="container-fluid">
+    <h1>Add Member</h1>
+    <hr>
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit" class="btn btn-primary">Save</button>
+      <a href="{% url 'contacts' %}" class="btn btn-secondary">Cancel</a>
+    </form>
+  </div>

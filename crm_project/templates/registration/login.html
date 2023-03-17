@@ -1,0 +1,20 @@
+{% include "header.html" %}
+
+<div class="container-fluid bg-2 text-center">
+    <h1> Customer Relationship Management system </h1>
+</div>
+
+<div class = "container-fluid bg-3 text-center">
+<h2>Log In</h2>
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Log In</button>
+</form>
+</div>
+<div class = "container-fluid bg-4 text-center">
+</div>
+
+<footer class="container-fluid bg-5 text-center">
+  <p> Made By <a href="#">Footer</a></p>
+</footer>

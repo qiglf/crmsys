@@ -1,0 +1,58 @@
+{% include "header.html" %}
+<div class="container-fluid bg-2 text-center">
+    <h1> My Contacts - List of all candidates </h1>
+</div>
+  
+   <div class="container-fluid bg-3 text-left">
+   <a href="{% url 'add_member' %}" class="btn btn-primary btn-sm">Add Member</a>
+    <form method="POST">
+      {% csrf_token %}
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Sort by:</label>
+        <div class="col-sm-4">
+          <select class="form-control" name="sort_field">
+            <option value="firstname">First Name</option>
+            <option value="lastname">Last Name</option>
+            <option value="id">ID</option>
+          </select>
+        </div>
+        <div class="col-sm-4">
+          <select class="form-control" name="sort_direction">
+            <option value="asc">Ascending</option>
+            <option value="desc">Descending</option>
+          </select>
+        </div>
+        <div class="col-sm-2">
+          <button type="submit" class="btn btn-primary">Sort</button>
+        </div>
+      </div>
+    </form>
+
+    <table class="table text-white">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Country</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for member in members %}
+          <tr class="">
+            <td>{{ member.id }}</td>
+            <td>{{ member.firstname }}</td>
+            <td>{{ member.lastname }}</td>
+            <td>{{ member.email }}</td>
+            <td>{{ member.phone }}</td>
+            <td>{{ member.country }}</td>
+            <td><a href="{% url 'details' member.id %}"
+                   class="btn btn-primary btn-sm">Details</a></td>
+      </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+   </div>

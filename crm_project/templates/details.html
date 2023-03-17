@@ -1,0 +1,40 @@
+{% include "header.html" %}
+
+
+{% block title %}
+
+{% endblock %}
+
+{% block content %}
+  <div class="container-fluid bg-2 text-center">
+    <h1> Details about {{ mymember.firstname }} {{ mymember.lastname }} </h1>
+  </div>
+
+  <div class = "container-fluid bg-3 text-left">
+    <h1>{{ mymember.firstname }} {{ mymember.lastname }}</h1>
+    <h2>Contact Details</h2>
+    <p>ID: {{ mymember.id }}</p>
+    <p>Phone: {{ mymember.phone }}</p>
+    <p>Email: {{ mymember.email }}</p>
+    <p>Country: {{ mymember.country }}</p>
+
+    <h2>Working History</h2>
+    <p>Education: {{ mymember.education }}</p>
+    <p>Position: {{ mymember.desired_position }}</p>
+    <p>Workplaces: {{ mymember.amount_of_workplaces }}</p>
+    <p>Years of experience: {{ mymember.total_years_of_exp }}</p>
+    <p>Hire Success: {{ mymember.hire_success }}</p>
+
+    <div class="container-fluid bg-4 text-center">
+      <a href="{% url 'edit_details' mymember.id %}" class="btn btn-dark">Edit member</a>
+        <form method="POST" action="{% url 'delete_member' mymember.id %}">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Delete member</button>
+        </form>
+    </div>
+  </div>
+  <footer class="container-fluid bg-5 text-center">
+    <p> Made By <a href="#">Footer</a></p>
+  </footer>
+{% endblock %}
+  
