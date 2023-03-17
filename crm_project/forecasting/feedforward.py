@@ -103,7 +103,7 @@ def run():
     input_data = []
     target_data = []
 
-    members_data = Member.objects.all() # Get data from your Member model
+    members_data = Member.objects.all() # Get data from Member model
 
     for member in members_data:
         input_data.append([
